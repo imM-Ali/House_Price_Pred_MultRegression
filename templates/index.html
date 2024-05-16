@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+</head>
+
+<body>
+ <div>
+	<h1>House Price Prediction</h1>
+ 
+
+
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="number" name="numBedrooms" placeholder="Number of Bedrooms" required="required" />
+      <input type="number" name="propertySize" placeholder="Property Size in Squared Meters" required="required" />
+      <input type="number" name="m_totalImages" placeholder="Number of Images Available" required="required" />
+      <span>['XXX', 'SI_666', 'G', 'F', 'E2', 'E1', 'D2', 'D1', 'C3', 'C2', 'C1', 'B3', 'B2', 'B1', 'A3', 'A2', 'A1A2', 'A1']</span>
+      <span>From 0 to 12 - Ascending</span>
+      <input type="number" name="ber_rating" placeholder="Ber Rating" required="required" />
+      <input type="number" name="category_Buy" placeholder="Listed under Buy Page?" required="required" />
+      <input type="number" name="sellerType_BRANDED_AGENT" placeholder="Are you an agent?" required="required" />
+      <input type="number" name="numBathrooms" placeholder="Num Bath" required="required" />
+      <input type="number" name="county_Other" placeholder="Is the property outside Dublin?" required="required" />
+      <input type="hidden"  name="seller_branch_y" value="-1.821138944" />
+      <input type="hidden"  name="year" value="2024" />
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>

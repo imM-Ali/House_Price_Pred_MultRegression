@@ -67,6 +67,19 @@
             font-size: 18px;
             color: #333;
         }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 
@@ -81,15 +94,37 @@
             <input type="number" name="numBathrooms" placeholder="Number of Bathrooms" required="required" />
             <input type="number" name="propertySize" placeholder="Property Size - M.sq" required="required" />
             <input type="hidden" name="year" value="2024">
-            <input type="number" name="zone" placeholder="Which zone are you in?" required="required" />
-            <input type="number" name="category_Buy" placeholder="Is the house advertised on the main page?" required="required" />
-            <input type="number" name="county_Other" placeholder="Is the property outside Dublin?" required="required" />            
+            <label for="zone">Which zone describes your location best</label>
+            <select name="zone" id="zone" required="required">
+                <option value="0">East</option>
+                <option value="2">West</option>
+                <option value="3">North</option>
+                <option value="4">South</option>
+            </select>
+            <label for="zone">Is the property outside Dublin?</label>
+            <select name="county_Other" id="county_Other" required="required">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+            <label for="category_Buy">Advertised on front page of Daft?</label>
+            <select name="category_Buy" id="category_Buy" required="required">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>       
             <input type="hidden" name="seller_branch_y" value="0.8238180958478152">
             
             <button type="submit">Predict</button>
         </form>
         <div class="prediction">
-            {{ prediction_text }}
+            
+                 
+                {% for item in prediction_text %}
+                <p>
+                {{ item }}
+                </p>
+                {% endfor %}
+               
+            
         </div>
     </div>
 </body>
